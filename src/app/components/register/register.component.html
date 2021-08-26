@@ -1,0 +1,43 @@
+<form [formGroup]="registerForm" (ngSubmit)="OnSubmit()">
+<mat-card style="text-align: center;">
+  <h3>SugnUp</h3>
+  <mat-form-field class="example-full-width" appearance="fill">
+    <mat-label>First Name</mat-label>
+    <input matInput placeholder="Ex.Mhd" id="FirstName" name="FirstName" formControlName="FirstName">
+  </mat-form-field><br>
+
+  <mat-form-field class="example-full-width" appearance="fill">
+    <mat-label>Last Name</mat-label>
+    <input matInput placeholder="Ex.Mhd" id="LastName" name="LastName" formControlName="LastName">
+  </mat-form-field><br>
+
+
+  <mat-form-field class="example-full-width" appearance="fill">
+    <mat-label>User Name</mat-label>
+    <input matInput placeholder="Ex.Mhd" id="Username" name="Username" formControlName="Username">
+  </mat-form-field><br>
+
+  <mat-form-field class="example-full-width" appearance="fill">
+    <mat-label>Email</mat-label>
+    <input type="email" matInput placeholder="Ex.google@outlook.com" id="Email" name="Email" formControlName="Email">
+    <mat-error *ngIf="registerForm.get('Email').hasError('Email') && !registerForm.get('Email').hasError('required')">
+      Please enter a valid email address
+    </mat-error>
+    <mat-error *ngIf="registerForm.get('Email').hasError('required')">
+      Email is <strong>required</strong>
+    </mat-error>
+  </mat-form-field><br>
+
+
+
+  <mat-form-field class="example-full-width" appearance="fill">
+    <mat-label>Password</mat-label>
+    <input matInput  id="Password" name="Password" formControlName="Password" type="Password">
+  </mat-form-field><br>
+
+  <br>
+
+  <button type="submit" mat-raised-button color="primary">Submit</button>
+
+</mat-card>
+</form>

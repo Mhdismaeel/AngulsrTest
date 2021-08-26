@@ -1,0 +1,29 @@
+
+<form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+  <h1 style="text-align: center;color: red;">LogIn</h1>
+    <mat-card style="text-align: center;">
+
+
+      <mat-form-field class="example-full-width" appearance="fill">
+        <mat-label>Email</mat-label>
+        <input type="email" matInput placeholder="Ex.google@outlook.com" id="Email" name="Email" formControlName="Email">
+        <mat-error *ngIf="loginForm.get('Email').hasError('Email') && !loginForm.get('Email').hasError('required')">
+          Please enter a valid email address
+        </mat-error>
+        <mat-error *ngIf="loginForm.get('Email').hasError('required')">
+          Email is <strong>required</strong>
+        </mat-error>
+      </mat-form-field><br>
+
+      <mat-form-field class="example-full-width" appearance="fill">
+        <mat-label>Password</mat-label>
+        <input matInput  id="Password" name="Password" formControlName="Password" type="Password">
+      </mat-form-field><br>
+
+      <br>
+
+      <button type="submit" mat-raised-button color="primary">Submit</button>
+
+    </mat-card>
+</form>
+

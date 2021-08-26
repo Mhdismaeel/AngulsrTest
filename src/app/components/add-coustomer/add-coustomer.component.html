@@ -1,0 +1,33 @@
+
+<form [formGroup]="customerForm" (ngSubmit)="onSubmit()">
+  <h1 style="text-align: center;color: red;">Add New Customer</h1>
+    <mat-card style="text-align: center;">
+
+      <mat-form-field class="example-full-width" appearance="fill">
+        <mat-label>Name</mat-label>
+        <input matInput  id="Name" name="Name" formControlName="Name">
+      </mat-form-field><br>
+
+      <mat-form-field class="example-full-width" appearance="fill">
+        <mat-label>Gender</mat-label>
+        <mat-select formControlName="Gender">
+          <mat-option *ngFor="let g of Gender" [value]="g">
+           {{g}}
+          </mat-option>
+
+        </mat-select>
+        </mat-form-field><br>
+
+
+      <mat-form-field class="example-full-width" appearance="fill">
+        <mat-label>Phone</mat-label>
+        <input matInput  id="Phone" name="Phone" formControlName="Phone">
+      </mat-form-field><br>
+
+      <br>
+
+      <button type="submit" mat-raised-button color="primary">Submit</button>
+
+    </mat-card>
+</form>
+

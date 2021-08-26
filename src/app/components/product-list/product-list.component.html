@@ -1,0 +1,58 @@
+<mat-drawer-container class="example-container">
+  <mat-drawer mode="side" opened style="width: 25%;">
+   <h2 style="color: black;text-align: center;">New Order</h2>
+
+    <form [formGroup]="OrderForm" (ngSubmit)="Submit()">
+
+   <mat-form-field appearance="fill" style="width: 100%;">
+    <mat-label>Customer List</mat-label>
+    <mat-select formControlName="CustomerId">
+      <mat-option *ngFor="let t of CustomersList" [value]=t.Id >
+        {{t.Name}}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+
+
+
+  <div formArrayName="OrderDetails">
+    <div *ngFor="let OrderDetail of OrderDetails.controls; let i=index">
+      <div [formGroupName]="i">
+        <table style="width:100%;text-align: center;">
+
+          <tr>
+            <td><input formControlName="ProductName" style="border: 0mm;" size="4"></td>
+            <td><button mat-button color="primary">+</button>
+            </td>
+            <td><input formControlName="Count" style="border: 0mm;" size="4"></td>
+            <td><button mat-button color="primary">-</button></td>
+            <td><input formControlName="UnitPrice" style="border: 0mm;" size="4"></td>
+
+          </tr>
+
+        </table>
+      </div>
+
+    </div>
+  </div>
+  <mat-form-field appearance="fill">
+    <mat-label>Total</mat-label>
+    <input matInput type="number" formControlName="PaidAmount">
+    <span matSuffix>$</span>
+  </mat-form-field><br>
+
+  <button mat-raised-button color="primary">Paid</button>
+
+</form>
+
+  </mat-drawer>
+  <mat-drawer-content style="padding: 10px;">
+
+    <mat-grid-list cols="4" rowHeight="100px">
+      <mat-grid-tile *ngFor="let t of ProductList">
+        <button mat-raised-button color="primary" style="width: 100%;height: 100%;" (click)="addOrderDetails(t)">{{t.Name}}</button>
+      </mat-grid-tile>
+    </mat-grid-list>
+
+  </mat-drawer-content>
+</mat-drawer-container>
